@@ -1,6 +1,7 @@
 ### Backup the hosts complete Registry 
 Start (Windows button) + R ---> Run ---> regedit
 Right click 'Computer' and then click 'Export'. Save the registry (e.g. backup.reg).
+<img title="imager" alt="Alt text" src="Untitled1.png">
 
 ### Disable csagent service
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CSAgent
@@ -24,7 +25,7 @@ HKLM:\SYSTEM\CurrentControlSet\Services\CSAgent
 
 ### Reboot Server
 
-### Uninstall from elevated command prompt with Uninstall Tool.
+### Uninstall from elevated command prompt with Uninstall Tool (i.e. CsUninstallTool.exe).
 
 ### Double-check inside "Add and Remove Programs".
 
