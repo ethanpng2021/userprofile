@@ -1,4 +1,4 @@
-### Backup the hosts complete Registry 
+### Backup the host's complete Registry 
 Start (Windows button) + R ---> Run ---> regedit
 
 Right click 'Computer' and then click 'Export'. Save the registry (e.g. backup.reg).
