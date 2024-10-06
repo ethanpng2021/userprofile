@@ -3,6 +3,8 @@ Start (Windows button) + R ---> Run ---> msconfig ---> Boot
 
 <img title="imager2" alt="Alt text2" src="safemode.PNG">
 
+Reboot.
+
 ### Backup the host's complete Registry 
 Start (Windows button) + R ---> Run ---> regedit
 
@@ -36,4 +38,9 @@ HKLM:\SYSTEM\CurrentControlSet\Services\CSAgent
 
 ### Double-check inside "Add and Remove Programs".
 
-### Reboot server again. Done.
+### Reboot server again.
+
+### Switch back to Normal Mode from Safe Mode.
+Start (Windows button) + R ---> Run ---> msconfig ---> Boot
+
+Uncheck "Safe Boot" and then reboot.
