@@ -1,3 +1,8 @@
+### Switch to Safe Mode
+Start (Windows button) + R ---> Run ---> msconfig ---> Boot
+
+<img title="imager2" alt="Alt text2" src="safemode.png">
+
 ### Backup the host's complete Registry 
 Start (Windows button) + R ---> Run ---> regedit
 
