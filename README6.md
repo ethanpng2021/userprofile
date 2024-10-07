@@ -1,6 +1,15 @@
 ### Original Equation:
 
+Without PMV:\
 $$T_{sup} = T_{rtn} + (1 - CWV) \cdot (T_{rtn} - T_{set}) + k \cdot VSD$$
+
+With PMV:\
+$$T_{sup} = T_{rtn} + (1 - CWV) \cdot (T_{rtn} - T_{set}) + k \cdot VSD + \alpha \cdot pmv$$
+
+In this equation:
+
+- $$\alpha$$ is a coefficient that determines the impact of 'pmv' on the supply temperature, $$\text T_{sup}$$.
+- This formulation assumes that 'pmv' has an additive effect on the resultant value of the equation. The nature of this influence should be guided by the context (e.g., if 'pmv' represents thermal comfort, it might influence the setpoints or act as a feedback mechanism).
 
 ### Modified Equation Using Time Periodic Adjustment:
 
