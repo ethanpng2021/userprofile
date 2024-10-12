@@ -6,10 +6,16 @@ $$T_{sup} = T_{rtn} + (1 - CWV) \cdot (T_{rtn} - T_{set}) + k \cdot VSD$$
 With PMV:\
 $$T_{sup} = T_{rtn} + (1 - CWV) \cdot (T_{rtn} - T_{set}) + k \cdot VSD + \alpha \cdot pmv$$
 
+Combined with VAV dampers downstream:\
+$$T_{sup} = T_{rtn} + (1 - CWV) \cdot (T_{rtn} - T_{set}) + k \cdot VSD + \alpha \cdot pmv + \beta \cdot \left(\sum_{i=1}^{10} w_i \cdot D_i\right)$$
+
 In this equation:
 
 - $$\alpha$$ is a coefficient that determines the impact of 'pmv' on the supply temperature, $$\text T_{sup}$$.
 - This formulation assumes that 'pmv' has an additive effect on the resultant value of the equation. The nature of this influence should be guided by the context (e.g., if 'pmv' represents thermal comfort, it might influence the setpoints or act as a feedback mechanism).
+- $$\beta$$ is a coefficient that represents how strongly VAV damper positions affect the supply air temperature.
+- $$D_{i}$$ is the damper position for the $$i^{th}$$ VAV.
+- $$w_{i}$$ is the weight factor for each VAV damper position. These weights may need to be determined based on how significantly each VAV influences the system, potentially requiring calibration based on system performance or empirical data.
 
 ### Modified Equation Using Time Periodic Adjustment:
 
