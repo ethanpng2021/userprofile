@@ -120,30 +120,31 @@ Automate your tests to run on every push.
    ```yaml
    name: Python application
 
-   on:
-     push:
-       branches: [ main ]
-     pull_request:
-       branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-   jobs:
-     build:
+jobs:
+  build:
 
-       runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-       steps:
-       - uses: actions/checkout@v3
-       - name: Set up Python 3.9
-         uses: actions/setup-python@v4
-         with:
-           python-version: '3.9'
-       - name: Install dependencies
-         run: |
-           python -m pip install --upgrade pip
-           pip install -r requirements.txt || echo "No requirements.txt found"
-       - name: Run tests
-         run: |
-           python -m unittest discover tests
+    steps:
+     - name: Checkout code
+       uses: actions/checkout@v3
+     - name: Set up Python
+       uses: actions/setup-python@v4
+       with:
+         python-version: '3.x' 
+     - name: Install dependencies
+       run: |
+         python -m pip install --upgrade pip
+         pip install -r requirements.txt || echo "No requirements.txt found"
+     - name: Run tests
+       run: |
+         python -m unittest discover test
    ```
 
 3. **Commit the Workflow File**:
