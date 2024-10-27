@@ -34,13 +34,13 @@ HKLM:\SYSTEM\CurrentControlSet\Services\CSAgent
 
 ### Reboot Server
 
-### Uninstall from command prompt (Administrator) with Uninstall Tool (i.e. CsUninstallTool.exe).
-
-### Double-check inside "Add and Remove Programs".
-
-### Reboot server again.
-
 ### Switch back to Normal Mode from Safe Mode.
 Start (Windows button) + R ---> Run ---> msconfig ---> Boot
 
-Uncheck "Safe Boot" and then reboot.
+Uncheck "Safe Boot" and then REBOOT again.
+
+### Uninstall from command prompt (Administrator) with Uninstall Tool (i.e. CsUninstallTool.exe).
+
+### Double-check inside "Add and Remove Programs" and "Services".
+
+### Reboot server again.
