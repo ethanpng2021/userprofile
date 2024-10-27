@@ -210,4 +210,75 @@ GitHub offers built-in project management tools, but you can also use external t
 
 By following these steps, you've set up a basic "Hello World" project with unit testing, integrated it with GitHub for version control, automated testing with GitHub Actions, and organized your workflow using a Kanban board. This foundation can be expanded as you take on more complex projects, incorporating additional best practices and tools as needed.
 
-Feel free to ask if you have any specific questions or need further assistance with any of the steps!
+# AWS GITHUB CICD
+
+Configuring GitHub with AWS involves integrating services from both platforms to facilitate workflows such as continuous integration and continuous deployment (CI/CD). Here's a comprehensive guide to set up GitHub with AWS, focusing on an example of deploying a simple application using AWS services:
+
+### Prerequisites
+- A GitHub account.
+- An AWS account.
+- Basic knowledge of Git and AWS services.
+
+### Steps:
+
+#### 1. **Setting Up Your GitHub Repository**
+   - **Create a Repository:** Go to your GitHub account, and create a new repository for your application.
+   - **Clone the Repository:** Clone the repository to your local machine using Git for further configuration.
+
+     ```bash
+     git clone https://github.com/your-username/your-repo.git
+     cd your-repo
+     ```
+   - **Add Your Code:** Add your application code to this repository and commit the changes.
+     ```bash
+     git add .
+     git commit -m "Initial commit with application code"
+     git push origin main
+     ```
+
+#### 2. **AWS IAM Role Creation**
+   - **Access IAM Console:** Go to the AWS Identity and Access Management (IAM) console.
+   - **Create an IAM Role:** 
+     - Choose `Roles` and click on `Create role`.
+     - Choose `AWS service` and select `EC2` (or any other service like Lambda, depending on deployment).
+     - Attach necessary policies to allow access to required AWS resources (e.g., `AmazonS3FullAccess` for S3 or `AmazonEC2FullAccess` for EC2).
+     - Name the role and save it.
+
+#### 3. **AWS CodeDeploy Setup**
+   - **Access CodeDeploy Console:** Navigate to AWS CodeDeploy service.
+   - **Create an Application:**
+     - Choose `Create application`.
+     - Configure the application with the platform you wish to deploy to (e.g., EC2/On-premises).
+   - **Create a Deployment Group:**
+     - Specify the EC2 instances (by tags or individually) that should be included in the deployment group.
+     - Associate the IAM role created previously.
+
+#### 4. **AWS CodePipeline Setup (Continuous Deployment)**
+   - **Access CodePipeline Console:** Go to AWS CodePipeline service.
+   - **Create a Pipeline:**
+     - Choose `Create pipeline` and provide a name for your pipeline.
+     - **Source Stage:**
+       - Choose `GitHub` as the source provider.
+       - Authenticate with your GitHub account.
+       - Select the repository and branch to build and deploy.
+     - **Build Stage:**
+       - (Optional) Add a build stage using AWS CodeBuild to build your code.
+     - **Deploy Stage:**
+       - Select `AWS CodeDeploy` as the deployment provider and link it with the application and deployment group created earlier.
+
+#### 5. **Configure GitHub (Access Integration)**
+   - **GitHub Webhook (Optional):** Set up a webhook in GitHub to trigger the pipeline on code push events.
+     - Go to the GitHub repository, click on `Settings` > `Webhooks`.
+     - Add a webhook URL pointing to AWS (CodePipeline can automatically push code updates).
+
+#### 6. **Test the Setup**
+   - **Commit Changes:** Push changes to your GitHub repository.
+   - **Trigger Pipeline:** Ensure your pipeline is triggered and deploys the changes accordingly.
+   - **Monitor Deployment:** Use the AWS CodeDeploy console to check the deployment status and logs.
+
+### Tips
+- **Security:** Ensure your AWS access keys and secrets are properly secured.
+- **Notifications:** Set up AWS CloudWatch and SNS for deployment success/failure notifications.
+- **IAM Policies:** Fine-tune IAM roles and policies to restrict access only to necessary resources.
+
+This integration allows automatic deployments every time code is pushed to the GitHub repository, facilitating a robust CI/CD pipeline.
