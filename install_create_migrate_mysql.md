@@ -130,15 +130,15 @@ In the SQL statement `GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%' WITH GRANT OP
 
 Breaking it down:
 
-- The first `*` (before the dot) is a wildcard representing all databases accessible by the MySQL server. It means the privileges apply to any database.\
+- The first `*` (before the dot) is a wildcard representing all databases accessible by the MySQL server. It means the privileges apply to any database.
 - The second `*` (after the dot) is a wildcard for all tables within the databases. It means the privileges apply to any table within any database.
 
 Therefore, `*.*` collectively specifies all tables across all databases on the MySQL server.
 
 #### Implications of This Grant
 
-- **Full Access**: The user `'newuser'` will have the specified privileges on every database and every table.\
-- **Admin-Level Permission**: Granting `ALL PRIVILEGES` provides comprehensive control, including the ability to SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, etc., along with database administration operations.\
+- **Full Access**: The user `'newuser'` will have the specified privileges on every database and every table.
+- **Admin-Level Permission**: Granting `ALL PRIVILEGES` provides comprehensive control, including the ability to SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, etc., along with database administration operations.
 - **WITH GRANT OPTION**: This addition allows the user to grant the same privileges to other users, effectively making `'newuser'` a superuser or admin.
 
 It is crucial to exercise caution when using such broad privileges to prevent accidental or intentional misuse of database resources. It is usually advisable to grant more specific permissions tailored to the user's needs.
@@ -147,8 +147,7 @@ It is crucial to exercise caution when using such broad privileges to prevent ac
 
 a. On the source db server, export each database into a *.sql file by using **mysqldump** (see Annex).\
 b. Use WinSCP to copy out the sql files into your PC.\
-c. Use WinSCP again to copy the sql files into the destination server (usually /home/user/).
-
+c. Use WinSCP again to copy the sql files into the destination server (usually /home/user/). \
 d. To import the `.sql` files into the destination MySQL, use the following command from your terminal:
 
 ```bash
