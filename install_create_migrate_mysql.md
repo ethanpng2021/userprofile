@@ -145,7 +145,7 @@ It is crucial to exercise caution when using such broad privileges to prevent ac
 
 ### Step 7: Importing `.sql` Files
 
-a. On the source db server, export each database into a *.sql file by using **mysqldump**.\
+a. On the source db server, export each database into a *.sql file by using **mysqldump** (see Annex).\
 b. Use WinSCP to copy out the sql files into your PC.\
 c. Use WinSCP again to copy the sql files into the destination server (usually /home/user/).
 
@@ -171,3 +171,25 @@ After entering the password, you should be able to run commands and see that the
 ---
 
 This process should get MySQL installed and configured on your Ubuntu Server 22.04 setup, allowing you to manage your databases effectively. If you encounter issues, check for error messages during each step to diagnose the problem.
+
+## Annex
+
+Normal execution
+```bash
+mysqldump -u username -p database_name > /path/to/backup.sql
+```
+
+All the databases
+```bash
+mysqldump -u username -p --all-databases > /path/to/backup.sql
+```
+
+Export db with specific tables
+```bash
+mysqldump -u username -p database_name table1 table2 > /path/to/backup.sql
+```
+
+Export as root (to be used during emergency when you have errors)
+```bash
+mysqldump -u root -p example_db > /backups/example_db.sql
+```
