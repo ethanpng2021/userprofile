@@ -178,6 +178,11 @@ Normal execution
 mysqldump -u username -p database_name > /path/to/backup.sql
 ```
 
+Pull from remote server save into local PC
+```bash
+mysqldump -u username -h 203.xxx.xxx.xxx -p database_name > /path/to/backup.sql
+```
+
 All the databases
 ```bash
 mysqldump -u username -p --all-databases > /path/to/backup.sql
