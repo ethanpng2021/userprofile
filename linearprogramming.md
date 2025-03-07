@@ -68,7 +68,7 @@ lp = LpProblem("Cooling_Optimization", LpMinimize)
 
 # Define variables
 CWV = LpVariable("CWV", 0, 100)  # Chilled Water Valve (0% - 100%)
-VSD = LpVariable("VSD", 0, 100)     # Variable Speed Drive (0% - 100%)
+VSD = LpVariable("VSD", 0, 1)     # Variable Speed Drive (0 - 1)
 T_sup = LpVariable("T_sup", 20, 26)  # Supply Temperature (20°C - 26°C)
 
 # Given parameters (assumed)
