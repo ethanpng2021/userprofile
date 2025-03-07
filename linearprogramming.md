@@ -58,3 +58,41 @@ In summary:
 $$ T_{sup}(t) = \frac{1}{W_{opt}} \sum_{i=0}^{W_{opt}-1} T_{rtn}(t - i) + (1 - CWV) \cdot \left( \frac{1}{W_{opt}} \sum_{i=0}^{W_{opt}-1} T_{rtn}(t - i) - T_{set} \right) + k \cdot VSD $$
 
 By using this equation, the supply air temperature $$\text T_{sup} $$ will be periodically adjusted using a time-averaged return air temperature, optimizing stability and performance over the chosen time intervals.
+
+### Executing LP (Linear Programming)
+```{python}
+from pulp import LpProblem, LpVariable, LpMinimize
+
+# Create LP problem
+lp = LpProblem("Cooling_Optimization", LpMinimize)
+
+# Define variables
+CWV = LpVariable("CWV", 0, 100)  # Chilled Water Valve (0% - 100%)
+VSD = LpVariable("VSD", 0, 1)     # Variable Speed Drive (0 - 1)
+T_sup = LpVariable("T_sup", 10, 20)  # Supply Temperature (10°C - 20°C)
+
+# Given parameters (assumed)
+T_rtn = 24  # Return Air Temperature (°C)
+T_set = 22  # Setpoint Temperature (°C)
+outsideTemp = 35  # Outdoor Temperature (°C)
+alpha = 0.1  # Outdoor temp impact factor
+k = 0.5  # VSD impact factor on T_sup
+a, b = 0.2, 0.3  # Energy cost coefficients
+
+# Supply temperature equation
+lp += T_sup == T_rtn + (1 - CWV / 100) * (T_rtn - T_set) + k * VSD - alpha * (outsideTemp - 30)
+
+# Temperature reduction constraint
+lp += T_sup <= T_set - 2
+
+# Energy minimization objective
+lp += a * VSD + b * CWV
+
+# Solve the problem
+lp.solve()
+
+# Output results
+print("Optimized CWV:", CWV.varValue, "%")
+print("Optimized VSD:", VSD.varValue)
+print("Optimized Supply Temp:", T_sup.varValue, "°C")
+```
