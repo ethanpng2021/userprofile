@@ -45,7 +45,7 @@ class ReplayBuffer:
 # ======================================
 class HVACDataEnvironment:
     def __init__(self, file_path):
-        self.data = read_excel(file_path, sheet_name="room36s")
+        self.data = read_excel(file_path, sheet_name="room")
         self.current_step = 0
         self.scaler = MinMaxScaler()
         
@@ -139,7 +139,7 @@ class DQNAgent:
 # ======================================
 if __name__ == "__main__":
     # Initialize environment with your data
-    env = HVACDataEnvironment('room36.xlsx')  # Replace with your file path
+    env = HVACDataEnvironment('room.xlsx')  # Replace with your file path
     state_size = 7  # 7 features: humidity, temp, co2, pressure, flowspeed, flowrate, outsidetemp
     action_size = env.num_actions
     agent = DQNAgent(state_size, action_size)
