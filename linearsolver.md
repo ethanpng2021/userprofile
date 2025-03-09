@@ -59,7 +59,7 @@ $$ T_{sup}(t) = \frac{1}{W_{opt}} \sum_{i=0}^{W_{opt}-1} T_{rtn}(t - i) + (1 - C
 
 By using this equation, the supply air temperature $$\text T_{sup} $$ will be periodically adjusted using a time-averaged return air temperature, optimizing stability and performance over the chosen time intervals.
 
-### Executing LP (Linear Programming)
+### Executing LP (Linear Solver)
 ```python
 from pulp import LpProblem, LpVariable, LpMinimize
 
